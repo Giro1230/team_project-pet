@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sajura.team_project.mapper.AdminMapper">
+<!-- 
+<insert id="boardinsert">
+   INSERT INTO board_tbl (board_title,board_writer,board_regdate,board_content) VALUES(#{board_title},#{board_writer},#{board_regdate},#{board_content})
+   </insert>
+    <select id="boardlist" resultType="com.sajura.team_project.vo.BoardVO">
+   		SELECT * FROM board_tbl;
+   </select>
+   <select id="detailboard" resultType="com.sajura.team_project.vo.BoardVO">
+   	SELECT * FROM board_tbl WHERE board_title=#{board_title}
+   </select>
+   
+   <update id="boardupdate">
+   	UPDATE board_tbl SET board_title = #{board.board_title} , board_content = #{board.board_content} WHERE board_no=#{board.board_no} 
+   </update>
+   
+   <select id="update" resultType="com.sajura.team_project.vo.BoardVO">
+   	SELECT * FROM board_tbl WHERE board_no=#{board_no}
+   </select>
+   <delete id="boarddelete">
+   DELETE FROM board_tbl WHERE board_no=#{board_no}
+   </delete>-->
+   <!--  유저 -->
+   
+   <select id="userList" resultType="com.sajura.team_project.vo.UserVO">
+   SELECT * FROM user_tbl;
+   </select>
+	<select id="userCheck" resultType="com.sajura.team_project.vo.UserVO">
+		SELECT * FROM
+		user_tbl WHERE user_id=#{user_id}
+	</select>
+	
+	<select id="login" resultType="_int">
+		SELECT COUNT(*) FROM user_tbl
+		WHERE user_id = #{id} AND user_pw = #{pw}
+	</select>
+
+	<!-- 마이페이지 -->
+	<!-- 
+	<update id="pwchange">
+		UPDATE User_tbl SET user_pw=#{user_cpw} WHERE
+		user_id=#{vo.user_id} and
+		user_pw=#{vo.user_pw}
+	</update>
+	<update id="addresschange">
+		UPDATE user_tbl SET user_address=#{vo.user_address},
+		user_address_detail=#{vo.user_address_detail},user_post=#{vo.user_post}
+		WHERE user_id=#{id}
+	</update>
+
+	<update id="telchange">
+		UPDATE user_tbl SET user_tel=#{user_tel} WHERE
+		user_id=#{id}
+	</update>
+
+	<delete id="userdelete">
+		DELETE FROM user_tbl WHERE user_id=#{id}
+	</delete>
+	 -->
+	<!-- 상품 -->
+	<!-- 
+	<insert id="productInsert">
+  	INSERT INTO product_tbl (product_name,product_price,product_content,product_tagval,product_quantity,product_img) VALUES (#{product_name}, #{product_price}, #{product_content}, #{product_tagval}, #{product_quantity}, #{product_img})
+  </insert>
+   <select id="searchList" resultType="com.sajura.team_project.vo.ProductVO">
+         SELECT * FROM product_tbl WHERE product_name LIKE '%${product_name}%'
+   </select>
+   <select id="selectOne" resultType="com.sajura.team_project.vo.ProductVO">
+	SELECT * FROM product_tbl WHERE product_no = #{product_no};
+	</select>
+	<select id="productList" resultType="com.sajura.team_project.vo.ProductVO">
+	SELECT * FROM product_tbl;
+	</select>
+	<update id="update">
+		UPDATE product_tbl SET product_name = #{product_name}, product_price = #{product_price}, product_content = #{product_content}, product_img = #{product_img}, product_quantity = #{product_quantity} WHERE product_no = #{product_no}
+	</update>
+	<delete id="delete">
+		DELETE FROM product_tbl WHERE product_no = #{product_no}
+	</delete>
+	<select id="productList2" resultType="com.sajura.team_project.vo.ProductVO">
+	SELECT * FROM product_tbl WHERE product_tagval = #{tagval};
+	</select>
+     -->
+   
+</mapper>

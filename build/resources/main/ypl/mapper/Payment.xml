@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sajura.team_project.mapper.PaymentMapper">
+<!-- Payment Insert -->  	
+	<insert id="paymentInsert" parameterType="java.util.ArrayList" >
+    INSERT INTO payment_tbl(
+          payment_name,
+          user_id,
+          payment_price,
+          payment_quantity,
+          payment_date,
+          payment_state
+    ) VALUES 
+    <foreach collection="list" item="item" separator=",">
+    (#{item.payment_name},#{item.user_id},#{item.payment_price},#{item.payment_quantity},now(),#{item.payment_state})
+    </foreach>
+    </insert> 
+   
+ 	
+   	<select id="paymentList" resultType="com.sajura.team_project.vo.PaymentVO">
+   	SELECT * FROM payment_tbl WHERE user_id = #{user_id};
+   	</select>
+   	<delete id="">
+   	</delete>
+</mapper>

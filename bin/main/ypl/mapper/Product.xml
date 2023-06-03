@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sajura.team_project.mapper.ProductMapper">
+ <insert id="productInsert">
+  	INSERT INTO product_tbl (product_name,product_price,product_content,product_tagval,product_quantity,product_img) VALUES (#{product_name}, #{product_price}, #{product_content}, #{product_tagval}, #{product_quantity}, #{product_img})
+  </insert>
+  
+   <select id="searchList" resultType="com.sajura.team_project.vo.ProductVO">
+         SELECT * FROM product_tbl WHERE product_name LIKE '%${product_name}%'
+   </select>
+   
+   <select id="selectOne" resultType="com.sajura.team_project.vo.ProductVO">
+	SELECT * FROM product_tbl WHERE product_no = #{product_no};
+	</select>
+	
+	<select id="productList" resultType="com.sajura.team_project.vo.ProductVO">
+	SELECT * FROM product_tbl;
+	</select>
+	
+	<update id="update">
+		UPDATE product_tbl SET product_name = #{product_name}, product_price = #{product_price}, product_content = #{product_content}, product_img = #{product_img}, product_quantity = #{product_quantity} WHERE product_no = #{product_no}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM product_tbl WHERE product_no = #{product_no}
+	</delete>
+	
+	<select id="productList2" resultType="com.sajura.team_project.vo.ProductVO">
+	SELECT * FROM product_tbl WHERE product_tagval = #{tagval};
+	</select>
+	
+	<select id="detailList" resultType="com.sajura.team_project.vo.ProductVO">
+	SELECT * FROM product_tbl WHERE product_name = #{product_name};
+	</select>
+</mapper>

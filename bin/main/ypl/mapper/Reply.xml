@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sajura.team_project.mapper.ReplyMapper">
+<!-- 댓글 조회 -->
+<select id="list"  resultType="com.sajura.team_project.vo.ReplyVO">
+    select * from reply_tbl  where bno = #{board_no}        
+</select>
+
+<!-- 댓글 작성 -->
+<insert id="insert" parameterType="com.sajura.team_project.vo.ReplyVO">
+    insert into reply_tbl (bno, writer, content, regDate)
+        value(#{bno}, #{writer}, #{content}, NOW())
+</insert>
+    
+<!-- 댓글 수정 -->
+<update id="update" parameterType="com.sajura.team_project.vo.ReplyVO">
+    update reply_tbl  set
+        content = #{content}
+    WHERE RNO = #{rno}
+</update>
+
+<!-- 댓글 삭제 -->
+<delete id="delete">
+    delete from reply_tbl 
+    where rno = #{rno} 
+</delete>
+
+</mapper>

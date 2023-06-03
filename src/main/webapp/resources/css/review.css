@@ -1,0 +1,64 @@
+#review-box{
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgba(238, 238, 238, 0.68);
+}
+
+#review-box .review:first-child{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-top: 2px solid #333333;
+    border-bottom: 2px solid #333333;
+}
+
+.review-updateBox{
+    margin: 10px 10px;
+    background-color: #E8F5FF;
+}
+
+.review{
+    margin: 10px 10px;
+    display: flex;
+    border-bottom: 1px solid #333333;
+    border-top: 1px solid #333333;
+}
+
+.review div{
+    height: 50px;
+    vertical-align: center;
+}
+
+.review-userId{
+    width: 15%;
+    text-align: center;
+}
+
+.review-productName{
+    width: 15%;
+}
+
+.review-comment{
+    width: 35%;
+}
+
+.review-score{
+    width: 10%;
+    text-align: center;
+}
+.review-date{
+    width: 15%;
+    text-align: center;
+}
+
+.review-buttons{
+    width: 10%;
+    text-align: center;
+}
+
+.review-deleteBtn{
+    width: 5%;
+}
+.review-updateBtn{
+    width: 5%;
+}

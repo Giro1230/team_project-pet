@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sajura.team_project.mapper.UserMapper">
+
+	<!-- ====================USER================================================ -->
+
+	<insert id="insertUser">
+		INSERT INTO user_tbl
+		(user_id,user_pw,user_name,user_tel,user_tel_check,user_email,user_email_check,user_address,user_address_detail,user_post,user_grade)
+		VALUES(#{user_id},#{user_pw},#{user_name},#{user_tel},#{user_tel_check},#{user_email},#{user_email_check},#{user_address},#{user_address_detail},#{user_post},#{user_grade})
+	</insert>
+	<select id="idOverCheck" resultType="_int">
+		SELECT COUNT(*) FROM
+		user_tbl WHERE user_id=#{id}
+	</select>
+	<select id="login" resultType="_int">
+		SELECT COUNT(*) FROM user_tbl
+		WHERE user_id = #{id} AND user_pw = #{pw}
+	</select>
+	<select id="userSelect"
+		resultType="com.sajura.team_project.vo.UserVO">SELECT * FROM user_tbl WHERE user_id = #{id} </select>
+	<select id="idCheck" resultType="string">
+		SELECT user_id FROM user_tbl
+		WHERE user_name = #{user_name} AND user_tel =
+		#{user_tel}
+	</select>
+	<select id="pwCheck" resultType="string">
+		SELECT user_pw FROM user_tbl
+		WHERE user_id = #{user_id} AND user_tel =
+		#{user_tel}
+	</select>
+	<select id="findById" resultType="com.sajura.team_project.vo.UserVO">
+		SELECT * FROM user_tbl WHERE user_id = #{user_id}
+	</select>
+
+	<!-- 마이페이지 -->
+	<update id="pwchange">
+		UPDATE User_tbl SET user_pw=#{user_cpw} WHERE
+		user_id=#{vo.user_id} and
+		user_pw=#{vo.user_pw}
+	</update>
+	<update id="addresschange">
+		UPDATE user_tbl SET user_address=#{vo.user_address},
+		user_address_detail=#{vo.user_address_detail},user_post=#{vo.user_post}
+		WHERE user_id=#{id}
+	</update>
+
+	<update id="telchange">
+		UPDATE user_tbl SET user_tel=#{user_tel} WHERE
+		user_id=#{id}
+	</update>
+
+	<delete id="userdelete">
+		DELETE FROM user_tbl WHERE user_id=#{id}
+	</delete>
+</mapper>
